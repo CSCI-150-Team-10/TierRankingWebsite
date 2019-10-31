@@ -1,0 +1,5 @@
+{"_id":{"$oid":"5db8a8415df3902268190752"},"Name":"item one","URL":"NaN","Price":{"$numberDouble":"NaN"},"votes":"[number of item votes]"}
+{"_id":{"$oid":"5db8b52a1d91d82268223b81"},"Name":"item two","URL":"NaN","Price":{"$numberDouble":"NaN"},"votes":"[number of item votes]"}
+{"_id":{"$oid":"5db8b5321d91d82268223b82"},"Name":"item three","URL":"NaN","Price":{"$numberDouble":"NaN"},"votes":"[number of item votes]"}
+{"_id":{"$oid":"5db8b53b1d91d82268223b83"},"Name":"item four","URL":"NaN","Price":{"$numberDouble":"NaN"},"votes":"[number of item votes]"}
+{"_id":{"$oid":"5db8b6191d91d82268223b84"},"Name":"item five","URL":"NaN","Price":{"$numberDouble":"NaN"},"votes":"[number of item votes]"}

@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5db8b12f5df3902268190753"},"List Name":"list one","User":"user that created list","Items":"[array of items in this list]","Likes":{"$numberInt":"0"},"Dislikes":{"$numberInt":"0"},"Description":"brief desciption of the list"}
+{"_id":{"$oid":"5db8b2cf1d91d82268223b80"},"List Name":"list two","User":"user that created list","Items":"[array of items in this list]","Likes":{"$numberInt":"0"},"Dislikes":{"$numberInt":"0"},"Description":"brief desciption of the list"}

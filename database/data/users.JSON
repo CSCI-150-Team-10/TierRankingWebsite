@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5db8a6fe5df3902268190751"},"Username":"one","Email":"???@something.com","Password":"hashThis","Lists":"[all lists created]","Votes":"[all items voted on and the list they are in]"}
+{"_id":{"$oid":"5db8a8201d91d82268223b72"},"Username":"two","Email":"???@something.com","Password":"hashThis","Lists":"[all lists created]","Votes":"[all items voted on and the list they are in]"}
+{"_id":{"$oid":"5db8a82a1d91d82268223b73"},"Username":"three","Email":"???@something.com","Password":"hashThis","Lists":"[all lists created]","Votes":"[all items voted on and the list they are in]"}
+{"_id":{"$oid":"5db8a8331d91d82268223b74"},"Username":"four","Email":"???@something.com","Password":"hashThis","Lists":"[all lists created]","Votes":"[all items voted on and the list they are in]"}
