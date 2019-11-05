@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600i,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <title>About</title>
+</head>
+<body>
+    <div class="nav_header">
+        <div class="nav_header_tierRankLogo">
+            <span class="nav_header_title">TierRank</span>
+            <img class="nav_header_logoimage" src="/images/little-logo.png" alt="tierRank Logo">
+        </div>
+
+        <div class="nav_header_categoryButton">
+
+            <svg class="nav_header_svg">
+                <use xlink:href="/images/sprite.svg#icon-dial-pad"></use>
+            </svg>
+
+            <button onclick="myFunction()" class="dropbtn">
+                <span class="nav_header_title"></span>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                Categories
+            </button>
+        </div>
+
+        <form action="#" class="search">
+            <input type="text" class="search__input" placeholder="Search Lists">
+            <button class="search__button">
+                <svg class="search__icon">
+                    <use xlink:href="/images/sprite.svg#icon-magnifying-glass"></use>
+                </svg>
+            </button>
+        </form>
+        <nav class="nav_userButtons">
+            <div class="nav_userButtons_Button">
+                <span class="nav_userButtons_Button_text">
+                    <a href="#" class="nav_userButtons_home">Home</a>
+                </span>
+            </div>
+            <div class="nav_userButtons_Button">
+                <span class="nav_userButtons_Button_text">
+                    <a href="#" class="nav_userButtons_about">About</a>
+                </span>
+            </div>
+            <div class="nav_userButtons_Button">
+                <span class="nav_userButtons_Button_text">
+                    <a href="#" class="nav_userButtons_Login">LogIn/Sign Up</a>
+                </span>
+            </div>
+            <div class="nav_userButtons_Button">
+                <svg class="nav_userButtons_icon">
+                    <use xlink:href="/images/sprite.svg#icon-user"></use>
+                </svg>
+            </div>
+        </nav>
+    </div>
+    <div class="category_container">
+        <div class="category_container_Button">
+            <svg class="category_container_icon">
+                <use xlink:href="/images/sprite.svg#icon-laptop"></use>
+            </svg>
+            <span class="category_container_topic"><a href="#" class="category_container_link">Electronics</a></span>
+        </div>
+        <div class="category_container_Button">
+            <svg class="category_container_icon">
+                <use xlink:href="/images/sprite.svg#icon-heart"></use>
+            </svg>
+            <span class="category_container_topic"><a href="#" class="category_container_link">Health &
+                    Fitness</a></span>
+        </div>
+        <div class="category_container_Button">
+            <svg class="category_container_icon">
+                <use xlink:href="/images/sprite.svg#icon-rocket"></use>
+            </svg>
+            <span class="category_container_topic"><a href="#" class="category_container_link">Gaming</a></span>
+        </div>
+        <div class="category_container_Button">
+            <svg class="category_container_icon">
+                <use xlink:href="/images/sprite.svg#icon-graduation-cap"></use>
+            </svg>
+            <span class="category_container_topic"><a href="#" class="category_container_link">Education</a></span>
+        </div>
+        <div class="category_container_Button">
+            <svg class="category_container_icon">
+                <use xlink:href="/images/sprite.svg#icon-beamed-note"></use>
+            </svg>
+            <span class="category_container_topic"><a href="#" class="category_container_link">Music</a></span>
+        </div>
+    </div>
+    <div class="about">
+        <div class="about_text">
+            About Us
+        </div>
+    </div>
+        <div class="about_context">
+            <div class="about_explain_title">
+                Why did we make the Site?
+            </div>
+            <div class="about_explain_text">
+                <p class="about_explain_p">
+                    We created the site for the purpose of people ranking consumer products, events, games, etc. we want the average consumer
+                    to see lists based on the honest opinions of consumers rather than compaines pushing higher end products towards people who 
+                    really aren't looking for something overkill. We also want people to have a site where they will feel comfortable looking up 
+                    their interests and hopefully discover new ones in the process.
+                </p>
+            </div>
+        </div>
+        <div class="foot_container">
+                <footer class="foot_capsule">
+                    <div class="foot_left">
+                        <div class="foot_title">
+                            <div class="foot_title_name">
+                                <p>TierRank</p>
+                            </div>
+                            <div class="foot_title_img">
+                                <img src="/images/little-logo.png" alt="little-logo">
+                            </div>
+                        </div>
+                        <div class="foot_copy">
+                            <span class="copyR">
+                                Copyright
+                            </span>
+                            <div class="foot_copy_svg">
+                                <svg><use xlink:href="/images/sprite.svg#icon-creative-commons"></use></svg>
+                            </div>
+                            <span class="copyR">
+                                2019 TierRank, Inc.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="foot_right">
+                        <div class="foot_link">
+                            <a href="#">Terms & Conditions</a>
+                        </div>
+                        <div class="foot_link">
+                            <a href="#">Privacy Policy</a>
+                        </div>
+                        <div class="foot_link">
+                            <a href="#">Cookie Policy</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+
+
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
