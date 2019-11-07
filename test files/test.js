@@ -20,4 +20,8 @@ window.onclick = function (event) {
 }
 
 
+document.querySelector('.nav_header_title').addEventListener('click',homePage);
 
+function homePage(){
+    document.location.href="file:///Users/ARomero/Documents/website/assets/html/landing-page.html";
+}
