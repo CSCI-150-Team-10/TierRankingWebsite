@@ -21,7 +21,37 @@ window.onclick = function (event) {
 
 
 document.querySelector('.nav_header_title').addEventListener('click',homePage);
+document.querySelector('.nav_header_tierRankLogo').addEventListener('click',homePage);
+document.querySelector('.foot_right').addEventListener('click',Terms);
+document.querySelector('.nav_userButtons_Login').addEventListener('click',login);
+document.querySelector('.nav_userButtons_about').addEventListener('click',about);
 
+document.querySelector('.category_container_topic4').addEventListener('click',education);
+//change category_container_topic to category_container_topic1,category_container_topic2,category_container_topic3,category_container_topic4,category_container_topic5 to distinguish the categories from each other and change the style.css files the same way
+document.querySelector('.list_link').addEventListener('click',details);
+// <div class = "list_link"></div> add this to each html file so it doesn't cause an error
+
+function homePage(){
+       document.location.href="file:///Users/ARomero/Documents/website/assets/html/landing-page.html";
+   }
 function homePage(){
     document.location.href="file:///Users/ARomero/Documents/website/assets/html/landing-page.html";
 }
+function Terms(){
+    window.open("file:///Users/ARomero/Documents/website/assets/Terms.html");
+    
+}
+function login(){
+    document.location.href="file:///Users/ARomero/Documents/website/assets/html/login2.html";
+}
+function about(){
+    document.location.href="file:///Users/ARomero/Documents/website/assets/html/about-page.html";
+}
+function education(){
+    document.location.href="file:///Users/ARomero/Documents/website/assets/html/education.html";
+}
+function details(){
+    document.location.href="file:///Users/ARomero/Documents/website/assets/html/list-details.html";
+
+}
+
