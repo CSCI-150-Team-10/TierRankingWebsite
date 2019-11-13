@@ -27,10 +27,12 @@ document.querySelector('.nav_userButtons_Login').addEventListener('click',login)
 document.querySelector('.nav_userButtons_about').addEventListener('click',about);
 
 document.querySelector('.category_container_topic4').addEventListener('click',education);
-//change category_container_topic to category_container_topic1,category_container_topic2,category_container_topic3,category_container_topic4,category_container_topic5 to distinguish the categories from each other and change the style.css files the same way
+//change category_container_topic to category_container_topic1,category_container_topic2,category_container_topic3,category_container_topic4,category_container_topic5 to distinguish the categories from each other
 document.querySelector('.list_link').addEventListener('click',details);
 // <div class = "list_link"></div> add this to each html file so it doesn't cause an error
-
+document.querySelector('.nav_userButtons_home').addEventListener('click',homePage);
+document.querySelector('.signContainer_button').addEventListener('click',login);
+/* add <a href="#" class="signContainer_button"> to every html file so that it doesn't cause an error*/
 function homePage(){
        document.location.href="file:///Users/ARomero/Documents/website/assets/html/landing-page.html";
    }
