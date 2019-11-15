@@ -33,8 +33,10 @@ document.querySelector('.list_link').addEventListener('click',details);
 document.querySelector('.nav_userButtons_home').addEventListener('click',homePage);
 document.querySelector('.signContainer_button').addEventListener('click',login);
 /* add <a href="#" class="signContainer_button"> to every html file so that it doesn't cause an error*/
-function homePage(){
-       document.location.href="file:///Users/ARomero/Documents/website/assets/html/landing-page.html";
+document.querySelector('.signc_button').addEventListener('click',login);
+/* add <a href="#" class="signc_button"> to every html file so that it doesn't cause error*/
+function homepage(){
+       location.reload("file:///Users/ARomero/Documents/website/assets/html/landing-page.html");
    }
 function homePage(){
     document.location.href="file:///Users/ARomero/Documents/website/assets/html/landing-page.html";
