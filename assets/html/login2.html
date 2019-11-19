@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,600i,700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <title>test</title>
 </head>
 <body>
+
+
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form action="#">
@@ -60,6 +62,10 @@
     signInButton.addEventListener('click', () => {
         container.classList.remove("right-panel-active");
     });
+	document.querySelector('input[value="Sign In"]').addEventListener('click',homePage);
+	function homePage(){
+	document.location.href="landing-page.html"
+	}
 </script>
 </body>
 </html>
