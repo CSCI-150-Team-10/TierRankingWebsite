@@ -13,9 +13,9 @@ async function main() {
     try
 {
         await client.connect();
-        await userExists(client, "<uniqueUsername>");
-        await deleteExistingUser(client, "<uniqueUsername>");
-        await userExists(client, "<uniqueUsername>");
+        await userExists(client, "<newUniqueUsername>");
+        await deleteExistingUser(client, "<newUniqueUsername>");
+        await userExists(client, "<newUniqueUsername>");
 
     }
 	finally 
@@ -26,20 +26,20 @@ async function main() {
 
 main().catch(console.error);
 
-async function deleteExistingUser(client, username) {
-    const result = await client.db("data").collection("users").deleteOne({ name: username });
-    console.log(`${result.deletedCount} documents were deleted.`);
+async function deleteExistingUser(client, userName) {
+    const result = await client.db("data").collection("users").deleteOne({ username: userName });
+    console.log(`${result.deletedCount} user was deleted.`);
 }
 
-async function userExists(client, username) {
-    const result = await client.db("data").collection("users").findOne({ name: username });
+async function userExists(client, userName) {
+    const result = await client.db("data").collection("users").findOne({ username: userName });
 
     if (result)
 	{
-		console.log(`Found and deleted user in collection 'users' with the username '${username}'`);
-	} 
+		console.log(`Found and deleted user in collection 'users' with the username '${userName}'`);
+	}
 	else 
 	{
-        console.log(`No user found with the username '${username}'`);
+        console.log(`No user found with the username '${userName}'`);
     }
 }
