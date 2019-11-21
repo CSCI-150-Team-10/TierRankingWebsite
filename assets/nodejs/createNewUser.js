@@ -12,23 +12,22 @@ async function main()
     const client = new MongoClient(uri);
 
     try
-	{
+{
         await client.connect();
         await createNewUser(client,
             {
 				username: "<uniqueUsername>",
-				email: "<uniqueEmail>",
+				email: "<uniqueEmail.com>",
 				password: "<passwordhere>",
-                Lists: NaN,
-				Votes: NaN
+                Lists: [],
+				Votes: []
             }
         );
-    }
-	finally
-	{
+    } finally{
         await client.close();
     }
 }
+
 main().catch(console.error);
 
 async function createNewUser(client, newUser){
