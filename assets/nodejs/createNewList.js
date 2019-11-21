@@ -12,13 +12,13 @@ async function main()
     const client = new MongoClient(uri);
 
     try
-	{
+{
         await client.connect();
         await createNewList(client,
             {
-				List Name: "<listName>",
+				List_Name: "<listName>",
 				User: "<uniqueUsername>",
-				Items: NaN,
+				Items: [],
 				Likes: 0,
 				Dislikes: 0,
 				Description: "NaN"
@@ -35,5 +35,5 @@ main().catch(console.error);
 
 async function createNewList(client, newList){
     const result = await client.db("data").collection("lists").insertOne(newList);
-    console.log(`New list created with the following id: ${result.insertedId}`);
+    console.log(`New list created with id: ${result.insertedId}`);
 }
