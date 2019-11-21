@@ -1,5 +1,8 @@
 
-
+if(sessionStorage.getItem('data-theme') === 'dark'){
+    document.documentElement.setAttribute('data-theme','dark')
+darkMode();
+}
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -69,6 +72,9 @@ function about(){
     document.location.href="../html/about-page.html";
 }
 function education(){
+    
+    console.log(sessionStorage.getItem('data-theme'));
+    
     document.location.href="../html/education.html";
 }
 function details(){
@@ -107,10 +113,13 @@ function darkMode(){
             if(this.checked){
                 trans()
                 document.documentElement.setAttribute('data-theme','dark')
+                sessionStorage.setItem('data-theme','dark')
+                   
             }
             else{
                 trans()
                 document.documentElement.setAttribute('data-theme','light')
+                sessionStorage.setItem('data-theme','light')
             }
         })
     let trans = () => {
