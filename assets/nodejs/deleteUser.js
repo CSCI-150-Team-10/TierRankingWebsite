@@ -13,7 +13,6 @@ async function main() {
     try
 {
         await client.connect();
-
         await userExists(client, "<uniqueUsername>");
         await deleteExistingUser(client, "<uniqueUsername>");
         await userExists(client, "<uniqueUsername>");
@@ -37,7 +36,7 @@ async function userExists(client, username) {
 
     if (result)
 	{
-		console.log(`Found user in the collection with the username '${username}'`);
+		console.log(`Found and deleted user in collection 'users' with the username '${username}'`);
 	} 
 	else 
 	{
