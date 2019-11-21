@@ -12,7 +12,7 @@ async function main()
     const client = new MongoClient(uri);
 
     try
-	{
+{
         await client.connect();
         await createNewItem(client,
             {
@@ -31,5 +31,5 @@ main().catch(console.error);
 
 async function createNewItem(client, newItem){
     const result = await client.db("data").collection("items").insertOne(newItem);
-    console.log(`New Item created with the following id: ${result.insertedId}`);
+    console.log(`New Item created with _id: ${result.insertedId}`);
 }

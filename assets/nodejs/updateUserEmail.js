@@ -26,7 +26,7 @@ async function main() {
 
 main().catch(console.error);
 
-async function updateUsername(client, userEmail, newUserEmail) {
+async function updateEmail(client, userEmail, newUserEmail) {
     const result = await client.db("data").collection("users").updateOne({ email: userEmail }, { $set: newUserEmail });
 
     console.log(`${result.matchedCount} emails found.`);
