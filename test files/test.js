@@ -22,8 +22,9 @@ window.onclick = function (event) {
     }
 }
 //var Likes = document.querySelector('.list_card_title_num1').textContent;
-var like = 0;
-var dislike = 0;
+var like1 =like2 =dislike1 =dislike2 = 0;
+var like1Clicked=dislike1Clicked = like2Clicked = dislike2Clicked= true;
+var pageLocation = window.location.href;
 
 
 document.querySelector('.nav_header_title').addEventListener('click',homePage);
@@ -41,6 +42,9 @@ document.querySelector('.category_container_topic4').addEventListener('click',ed
 document.querySelector('.list_link').addEventListener('click',details);
 // <div class = "list_link"></div> add this to each html file so it doesn't cause an error
 document.querySelector('.nav_userButtons_home').addEventListener('click',homePage);
+document.querySelector('.nav_userButtons_Button1').addEventListener('click',homePage);
+document.querySelector('.nav_userButtons_Button2').addEventListener('click',about);
+document.querySelector('.nav_userButtons_Button3').addEventListener('click',login);
 document.querySelector('.signContainer_button').addEventListener('click',login);
 /* add <a href="#" class="signContainer_button"> to every html file so that it doesn't cause an error*/
 document.querySelector('.signc_button').addEventListener('click',login);
@@ -51,15 +55,23 @@ document.querySelector('.category_container_topic2').addEventListener('click',He
 document.querySelector('.category_container_topic1').addEventListener('click',Electronics);
 document.querySelector('[href = "#home"]').addEventListener('click',search);
 document.querySelector('input[type = "checkbox"]').addEventListener('click',darkMode);
-document.querySelector('.list_card_title_like-button1').addEventListener('click',likes);
-document.querySelector('.list_card_title_dislike-button1').addEventListener('click',dislikes);
+document.querySelector('.list_card_title_like-button1').addEventListener('click',likes1);
+document.querySelector('.list_card_title_dislike-button1').addEventListener('click',dislikes1);
+document.querySelector('.list_card_title_like-button2').addEventListener('click',likes2);
+document.querySelector('.list_card_title_dislike-button2').addEventListener('click',dislikes2);
 function homePage(){
-   // var x = document.location;
-    //console.log(x);
-   // console.log(document.location = "../html/landing-page.html");
-   //document.getElementById(".nav_header_title").innerHTML = x;
     
+    if(pageLocation === window.location.href){
+        
+    
+        window.location.reload();
+        
+    }
+    else{
     document.location.href="../html/landing-page.html";
+ 
+    }
+
 }
 function Terms(){
     window.open("../Terms.html");
@@ -72,7 +84,11 @@ function about(){
     document.location.href="../html/about-page.html";
 }
 function education(){
-    
+    if(sessionStorage.getItem('data-theme') === 'dark'){
+        darkMode();
+        document.location.href="../html/education.html";
+    }
+    else
     console.log(sessionStorage.getItem('data-theme'));
     
     document.location.href="../html/education.html";
@@ -96,15 +112,40 @@ function Electronics(){
 function search(){
     document.location.href="../html/product-search.html";
 }
-function likes(){
-    like += 1
-    console.log(like);
-    document.querySelector('.list_card_title_num1').textContent = like;
+function likes1(){
+    if(like1Clicked){
+    like1 += 1
+    
+    document.querySelector('.list_card_title_num1').textContent = like1;
+        like1Clicked = false;
 }
-function dislikes(){
-    dislike += 1
-    console.log(dislike);
-    document.querySelector('.list_card_title_num2').textContent = dislike;
+}
+function dislikes1(){
+    if(dislike1Clicked === true){
+        
+    
+    dislike1 += 1
+    
+    document.querySelector('.list_card_title_num2').textContent = dislike1;
+        dislike1Clicked=false;
+    }
+}
+function likes2(){
+    if(like2Clicked === true){
+    like2 += 1
+    
+    document.querySelector('.list_card_title_num3').textContent = like2;
+    like2Clicked = false;
+ //   document.querySelector('.list_card_title_num3').classList.remove('active');
+}
+}
+function dislikes2(){
+    if(dislike2Clicked === true){
+    dislike2 += 1
+  
+    document.querySelector('.list_card_title_num4').textContent = dislike2;
+    dislike2Clicked = false;
+}
 }
 function darkMode(){
     var checkbox = document.querySelector('input[id=tex]');
@@ -114,7 +155,7 @@ function darkMode(){
                 trans()
                 document.documentElement.setAttribute('data-theme','dark')
                 sessionStorage.setItem('data-theme','dark')
-                   
+                    console.log(sessionStorage.getItem('data-theme'));
             }
             else{
                 trans()
