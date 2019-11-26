@@ -22,5 +22,5 @@ main().catch(console.error);
 
 async function deleteitems(client, oldItem){
 const result = await client.db("data").collection("items").deleteOne(oldItem);
-console.log(`New Item created with _id: ${result.insertedId}`);
+console.log(`Old Item Deleted`);
 }
