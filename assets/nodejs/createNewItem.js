@@ -18,7 +18,6 @@ async function main()
             {
 				Name: "<itemName>",
 				Price: 0.0,
-				Category: "<category>"
 				votes: 0
             }
         );
