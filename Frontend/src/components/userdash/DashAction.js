@@ -1,3 +1,7 @@
+/* 
+so here are the component links that will pop up when the user logs into the dashboard,
+they will lead you intot the action pages for adding experience list or ecit profiles.
+*/
 import React from "react";
 import { Link } from "react-router-dom";
 const DashAction = () => {

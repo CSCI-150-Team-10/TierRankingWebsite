@@ -1,3 +1,8 @@
+/* 
+this is the componet the web app will be using to be loading what the list will look like
+--however this is the list for the user dashboard not a list that will be placed in different component
+--havent implemented that part yet.
+*/
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
