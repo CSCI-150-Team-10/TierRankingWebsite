@@ -1,3 +1,8 @@
+/* 
+So here is the form component taht the user will use to creat the profile, this the form they will fill
+out when they first create it, it may look the same as the update profile, but it is different becaseu
+you are not updating it you are adding it
+*/
 import React, { Fragment, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -5,7 +10,7 @@ import { connect } from "react-redux";
 import { addProfile } from "../../actions/profile";
 const AddProfile = ({ addProfile, history }) => {
   const [formData, setFormData] = useState({
-    website: "",
+    website: "", //we are deconstructing the formdata from the input form so that we can input the data
     status: "",
     skills: "",
     bio: "",
@@ -16,6 +21,7 @@ const AddProfile = ({ addProfile, history }) => {
     instagram: ""
   });
   const {
+    //we grab the data from the formdata to use in the website.
     website,
     status,
     skills,
@@ -27,11 +33,14 @@ const AddProfile = ({ addProfile, history }) => {
     instagram
   } = formData;
 
-  const onChange = e =>
+  const onChange = (
+    e //here is the onchange function to allow the user to type and submit information
+  ) =>
+    //into the fields. without thes they would not be able to
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
-    e.preventDefault();
+    e.preventDefault(); //this function is here to submit the data from form and place.
     addProfile(formData, history);
   };
   return (
@@ -165,7 +174,12 @@ const AddProfile = ({ addProfile, history }) => {
     </Fragment>
   );
 };
-
+/*
+You can use prop-types to document the intended types of properties passed to components.
+will check props passed to your components against those definitions, 
+and warn in development if they don’t match.
+*/
+//these next functions are essentially making the neew component and rendering it on the page.
 AddProfile.propTypes = {
   addProfile: PropTypes.func.isRequired
 };

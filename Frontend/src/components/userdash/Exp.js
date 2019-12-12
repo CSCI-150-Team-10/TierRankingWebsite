@@ -1,3 +1,8 @@
+/* 
+this is the componen that will pop up for the user to input the experience
+here it will import the user data from the experience array and will input them into the properplace onthe
+table according to the experience id.
+*/
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";

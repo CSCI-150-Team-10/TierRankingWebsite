@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-
+/*
+this is the main navigation bar for the user to see, this navbar is separated into two differnt
+navbars, what i mean by this is that we have navbar to show the user not logged in, and a navbar for
+a user that IS logged in.
+*/
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
-  const goLinks = (
+  const goLinks = (//navbar for the logged in user
     <ul>
       <li>
         <Link to="/dashboard">Your Page</Link>
@@ -20,7 +24,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
     </ul>
   );
-  const stopLinks = (
+  const stopLinks = (//navbar for the not logged in user(guest)
     <ul>
       <li>
         <Link to="#!">Users</Link>
@@ -33,7 +37,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
     </ul>
   );
-  return (
+  return (//part of the navbar that will always be showing.
     <nav className="hearder_nav">
       <h1>
         <Link to="/">

@@ -3,18 +3,21 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addMyList } from "../../actions/profile";
+//this component acts the same as the other forms, we take in the form data placed in fields and 
+//places them into the desired variables for the form data
 const AddMyList = ({ addMyList, history }) => {
   const [formData, setFormData] = useState({
     title: "",
     item1: "",
     item2: "",
     item3: "",
-    item4: "",
+    item4: "",//we are taking the data as an empty string first
     item5: '',
     description: ""
   });
   const { title, item1, item2, item3, item4,item5, description } = formData;
-  const onChange = e =>
+  const onChange = e =>//deconstruct the form data to have access to the variables 
+  //allow the fields to have data to be typed in them.
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
@@ -67,7 +70,12 @@ const AddMyList = ({ addMyList, history }) => {
     </Fragment>
   );
 };
-
+/*
+You can use prop-types to document the intended types of properties passed to components.
+will check props passed to your components against those definitions, 
+and warn in development if they don’t match.
+*/
+//these next functions are essentially making the neew component and rendering it on the page.
 AddMyList.propTypes = {
     addMyList: PropTypes.func.isRequired
 };

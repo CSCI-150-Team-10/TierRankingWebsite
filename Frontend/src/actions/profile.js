@@ -28,11 +28,11 @@ export const addProfile = (
   try {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json'//here we set the content type the for the headers for the information 
       }
     };
 
-    const res = await axios.post('/api/profile', formData, config);
+    const res = await axios.post('/api/profile', formData, config);//the route we will be using.
 
     dispatch({
       type: GET_PROFILE,
@@ -41,7 +41,7 @@ export const addProfile = (
 
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'go'));
 
-    if (!edit) {
+    if (!edit) {//if the profiile was updated we want to add the new informaiton 
       history.push('/dashboard');
     }
   } catch (err) {
@@ -62,9 +62,9 @@ export const addProfile = (
 export const addMyExperience = (formData, history) => async dispatch => {
   try {
     const config = {
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" }//here we set the content type the for the headers for the information 
     };
-    const res = await axios.put("/api/profile/experience", formData, config);
+    const res = await axios.put("/api/profile/experience", formData, config);//the route we will be using.
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
@@ -90,9 +90,9 @@ export const addMyExperience = (formData, history) => async dispatch => {
 export const addMyList = (formData, history) => async dispatch => {
   try {
     const config = {
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" }//here we set the content type the for the headers for the information 
     };
-    const res = await axios.put("/api/profile/list", formData, config);
+    const res = await axios.put("/api/profile/list", formData, config);//the route we will be using.
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
@@ -116,7 +116,7 @@ export const addMyList = (formData, history) => async dispatch => {
 // we want to delete the experiene we made api/profile/experience/:id
 export const delMyExp = id => async dispatch => {
   try {
-    const res = await axios.delete(`api/profile/experience/${id}`);
+    const res = await axios.delete(`api/profile/experience/${id}`);//the route we will be using.
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
@@ -131,7 +131,7 @@ export const delMyExp = id => async dispatch => {
 // we want to delete the list we made api/profile/experience/:id
 export const delMyList = id => async dispatch => {
   try {
-    const res = await axios.delete(`api/profile/list/${id}`);
+    const res = await axios.delete(`api/profile/list/${id}`);//the route we will be using.
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
