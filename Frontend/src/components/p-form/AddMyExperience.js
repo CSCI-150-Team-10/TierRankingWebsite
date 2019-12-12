@@ -3,6 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addMyExperience } from "../../actions/profile";
+//this component acts the same as the other forms, we take in the form data placed in fields and
+//places them into the desired variables for the form data
 const AddMyExperience = ({ addMyExperience, history }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -28,7 +30,7 @@ const AddMyExperience = ({ addMyExperience, history }) => {
         <i className="fas fa-award"></i> Add any experience you may have that
         supports your list ranking *this is not mandatory for list creations
       </p>
-      <form className="form"  onSubmit={e => onSubmit(e)}>
+      <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <input
             type="text"
@@ -101,7 +103,12 @@ const AddMyExperience = ({ addMyExperience, history }) => {
     </Fragment>
   );
 };
-
+/*
+You can use prop-types to document the intended types of properties passed to components.
+will check props passed to your components against those definitions, 
+and warn in development if they don’t match.
+*/
+//these next functions are essentially making the neew component and rendering it on the page.
 AddMyExperience.propTypes = {
   addMyExperience: PropTypes.func.isRequired
 };

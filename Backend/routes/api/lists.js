@@ -3,7 +3,6 @@ const router = express.Router();
 const { check, validationResult } = require("express-validator/check");
 const auth = require("../../middleware/auth");
 
-const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 const List = require("../../models/List");
@@ -31,6 +30,7 @@ router.post(
       const user = await User.findById(req.user.id).select("-password");
 
       const newList = new List({
+        //grab the information from the input fields
         text: req.body.text,
         category: req.body.category,
         item1: req.body.item1,
@@ -71,9 +71,9 @@ router.get("/", auth, async (req, res) => {
 // the route will be granted access level of:   Private
 router.get("/:id", auth, async (req, res) => {
   try {
+    //in the try we want to grab the id from the object being grabbed
     const list = await List.findById(req.params.id);
 
-    // Check for ObjectId format and post
     if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !list) {
       return res.status(404).json({ msg: "list not found" });
     }
@@ -85,25 +85,26 @@ router.get("/:id", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 // The route user will take    DELETE api/list/:id
 // description of action     Delete a list
 // the route will be granted access level of:   Private
 router.delete("/:id", auth, async (req, res) => {
   try {
+    //in the try we want to grab the id from the object being grabbed
     const list = await List.findById(req.params.id);
 
-    // Check for ObjectId format and post
+    //figure out if the list exists
     if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !list) {
-      return res.status(404).json({ msg: "Post not found" });
-    }
+      return res.status(404).json({ msg: "List not found" });
+    } // grab the user and see if the user is authorized
 
-    // Check user
     if (list.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User not authorized" });
     }
 
-    await list.remove();
+    await list.remove(); //remove the list
 
     res.json({ msg: "list removed" });
   } catch (err) {
@@ -112,7 +113,8 @@ router.delete("/:id", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 // The route user will take    PUT api/list/like/:id
 // description of action     Like a list
 // the route will be granted access level of:   Private
@@ -122,6 +124,7 @@ router.put("/like/:id", auth, async (req, res) => {
 
     // Check if the list has already been liked
     if (
+      //filter throught the list and see if the current user liked it
       list.likes.filter(like => like.user.toString() === req.user.id).length > 0
     ) {
       return res.status(400).json({ msg: "list already liked" });
@@ -129,7 +132,7 @@ router.put("/like/:id", auth, async (req, res) => {
 
     list.likes.unshift({ user: req.user.id });
 
-    await list.save();
+    await list.save(); //save the list likes
 
     res.json(list.likes);
   } catch (err) {
@@ -137,7 +140,8 @@ router.put("/like/:id", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 // The route user will take    PUT api/list/unlike/:id
 // description of action     Like a list
 // the route will be granted access level of:   Private
@@ -168,7 +172,8 @@ router.put("/unlike/:id", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 // The route user will take    POST api/list/comment/:id
 // description of action     Comment on a list
 // the route will be granted access level of:   Private
@@ -185,14 +190,17 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      //check if the field is inputed correctly
+      return res.status(400).json({ errors: errors.array() }); //add into the array and read off errors
     }
 
     try {
+      //every list will have its own comments
       const user = await User.findById(req.user.id).select("-password");
-      const post = await Post.findById(req.params.id);
+      const list = await List.findById(req.params.id); //find list
 
       const newComment = {
+        //get the data from field
         text: req.body.text,
         name: user.name,
         avatar: user.avatar,
@@ -210,30 +218,28 @@ router.post(
     }
   }
 );
-
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 // The route user will take    DELETE api/list/comment/:id/:comment_id
 // description of action     Delete comment
 // the route will be granted access level of:   Private
 router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
   try {
+    //see if you can pull out the comment from list id
     const list = await List.findById(req.params.id);
 
-    // Pull out comment
     const comment = list.comments.find(
       comment => comment.id === req.params.comment_id
-    );
+    ); // next we see if the comment exists
 
-    // Make sure comment exists
     if (!comment) {
       return res.status(404).json({ msg: "Comment does not exist" });
-    }
+    } // next we have to see if the user is authorized to be saying comments
 
-    // Check user
     if (comment.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User not authorized" });
     }
 
-    // Get remove index
     const removeIndex = list.comments
       .map(comment => comment.id)
       .indexOf(req.params.comment_id);
@@ -249,4 +255,6 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router; //export the route info to the router.
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////

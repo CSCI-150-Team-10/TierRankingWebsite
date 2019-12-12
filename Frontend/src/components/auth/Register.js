@@ -4,9 +4,11 @@ import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
-
+/*
+this is the register component is the registration page for the user, its just a standard form.
+*/
 const Register = ({ setAlert, register, isAuthenticated }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({//these are the variables the user will be inputing.
     name: "",
     email: "",
     password: "",
@@ -14,21 +16,21 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   });
   const { name, email, password, password2 } = formData;
   const onChange = e =>
-    setFormData({
+    setFormData({//allows the forms to have data to be inputed.
       ...formData,
       [e.target.name]: e.target.value
     });
 
   const onSubmit = e => {
-    e.preventDefault();
-    if (password !== password2) {
+    e.preventDefault();//allows the data to be submited
+    if (password !== password2) {//simple compare to make sure passwords are same
       setAlert("pass no match", "stop");
     } else {
       register({ name, email, password });
     }
   };
 
-  if (isAuthenticated) {
+  if (isAuthenticated) {//once this is authenticated we redirect the user to the dashboard.
     return <Redirect to="/dashboard" />;
   }
 

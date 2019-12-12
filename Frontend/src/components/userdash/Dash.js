@@ -1,3 +1,7 @@
+/* 
+Here is the main dashboard component, this is the main dash component because it will be holding 
+all the other componets of the other dashboard. so like the main continer
+*/
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -6,14 +10,14 @@ import { connect } from "react-redux";
 import DashAction from "./DashAction";
 import Exp from "./Exp";
 import List from "./List";
-import { getProfileNow } from "../../actions/profile";
+import { getProfileNow } from "../../actions/profile";//this will grab the current profile that is logged in
 
 const Dash = ({
-  getProfileNow,
+  getProfileNow,//need to grab info on the user logged in to see if they are authorized
   auth: { user },
   profile: { profile, loading }
 }) => {
-  useEffect(() => {
+  useEffect(() => {//dectect if the user has a profile
     getProfileNow();
   }, []); //////
 

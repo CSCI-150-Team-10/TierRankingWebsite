@@ -1,17 +1,22 @@
+/*
+so here is the form component that will be used to update the profile,
+with this however there is a check to see if the user updated the form and to see
+which field was updated.
+*/
 import React, { Fragment, useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addProfile, getProfileNow } from "../../actions/profile";
 const UpdateProfile = ({
-  profile: { profile, loading },
-  addProfile,
+  profile: { profile, loading },//deconstruct profile
+  addProfile,//get the functions we will be needing
   getProfileNow,
   history
 }) => {
   const [formData, setFormData] = useState({
     website: "",
-    status: "",
+    status: "",//these are the fields that will be updated and or infor put into
     skills: "",
     bio: "",
     twitter: "",
@@ -23,9 +28,10 @@ const UpdateProfile = ({
 
   useEffect(() => {
     getProfileNow();
-    setFormData({
+    setFormData({//here is the function to see if the the profile was updated or not
       website: loading || !profile.website ? "" : profile.website,
-
+//example, webiste is loading cause we havent hit submit, if it wasnt updated than commit nothiing
+//else we update the profile website attribute.
       status: loading || !profile.status ? "" : profile.status,
       skills: loading || !profile.skills ? "" : profile.skills.join(","),
 
@@ -42,7 +48,7 @@ const UpdateProfile = ({
 
   const {
     website,
-    status,
+    status,//here we deconstruct the information to grab the values to use later on.
     skills,
     bio,
     twitter,
@@ -52,7 +58,8 @@ const UpdateProfile = ({
     instagram
   } = formData;
 
-  const onChange = e =>
+  const onChange = e =>//here is the onchange function to allow the user to type and submit information
+  //into the fields. without thes they would not be able to 
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
@@ -190,12 +197,17 @@ const UpdateProfile = ({
     </Fragment>
   );
 };
-
-UpdateProfile.propTypes = {
+/*
+You can use prop-types to document the intended types of properties passed to components.
+will check props passed to your components against those definitions, 
+and warn in development if they don’t match.
+*/
+UpdateProfile.propTypes = {//these are the proptypes users profile will be checking for.
   addProfile: PropTypes.func.isRequired,
   getProfileNow: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
+//these next functions are essentially making the neew component and rendering it on the page.
 const mapStateToProps = state => ({
   profile: state.profile
 });

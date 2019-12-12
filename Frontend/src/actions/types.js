@@ -1,3 +1,7 @@
+/*
+here we have all of the action types the user on the website can take,
+pretty self explaninitory based so we gave them simple names to follow.
+*/
 export const SET_ALERT = "SET_ALERT";
 export const REMOVE_ALERT = "REMOVE_ALERT";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";

@@ -2,10 +2,14 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-
+/*
+this component is the first one the user will see when they first come to the site, 
+this will be so the user will only have access to the login and sign up links
+and once the user has successfully logged in, it will redircect to the dashboard page
+*/
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/dashboard" />; //if credentials valid then redirect to dashboard
   }
 
   return (

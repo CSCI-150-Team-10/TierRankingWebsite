@@ -1,6 +1,9 @@
+/*
+this file is for the authentication action the user will take for authorizing and or getting credentals
+*/
 import axios from "axios";
 import { setAlert } from "./alert";
-import {
+import {//actions the user will take for authentication
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
@@ -14,7 +17,7 @@ import setAuthToken from "../utils/setAuthToken"; //imports the auth token
 
 // this will load the user
 export const loadUser = () => async dispatch => {
-  if (localStorage.token) {
+  if (localStorage.token) {//we grag the token from the users local storage
     setAuthToken(localStorage.token);
   }
 
@@ -26,7 +29,7 @@ export const loadUser = () => async dispatch => {
       payload: res.data //the data sent from the route
     });
   } catch (err) {
-    dispatch({
+    dispatch({//if there are errors we state what type of error, the user can see this in the logs and redux dev tool
       type: AUTH_ERROR
     });
   }
@@ -40,7 +43,7 @@ export const register = ({ name, email, password }) => async dispatch => {
     }
   };
 
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, email, password });//convert the password and email values
 
   try {
     const res = await axios.post("/api/users", body, config); //request to the backend
@@ -58,7 +61,7 @@ export const register = ({ name, email, password }) => async dispatch => {
       errors.forEach(error => dispatch(setAlert(error.msg, "wrong"))); //look at erros from array
     }
 
-    dispatch({
+    dispatch({//if there are errors we state what type of error, the user can see this in the logs and redux dev tool
       type: REGISTER_FAIL
     });
   }
@@ -72,7 +75,7 @@ export const login = (email, password) => async dispatch => {
     }
   };
 
-  const body = JSON.stringify({ email, password });
+  const body = JSON.stringify({ email, password });//convert the password and email values
 
   try {
     const res = await axios.post("/api/auth", body, config);
@@ -83,7 +86,7 @@ export const login = (email, password) => async dispatch => {
     });
 
     dispatch(loadUser());
-  } catch (err) {
+  } catch (err) {//if there are errors we state what type of error, the user can see this in the logs and redux dev tool
     const errors = err.response.data.errors;
 
     if (errors) {
@@ -99,6 +102,7 @@ export const login = (email, password) => async dispatch => {
 
 export const logout = () => dispatch => {
     
-  dispatch({ type: CLEAR_PROFILE });
+  dispatch({ type: CLEAR_PROFILE });//when the user logs out we have to take actions to take the token out of storage for security and
+  //we have to clear the profile so no data is carried over for the next time they log in.
   dispatch({ type: LOGOUT });
 };

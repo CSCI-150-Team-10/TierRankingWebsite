@@ -3,20 +3,22 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
-
+/*
+this is the login component the user will see
+*/
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    email: "",
+    email: "",//data we will get from form fields
     password: ""
   });
   const { email, password } = formData;
-  const onChange = e =>
+  const onChange = e =>//allows the data to be inputed
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
 
-  const onSubmit = e => {
+  const onSubmit = e => {//allows the data to be submitted
     e.preventDefault();
     login(email, password);
   };
