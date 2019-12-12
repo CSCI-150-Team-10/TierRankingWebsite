@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+/*
+here we have the subnavbar componetn, this componetn is where the categories will be placeed
+like the links to the different categories. this will only pop up if the user is logged in
+*/
 const SubNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  //check for authentication first and if true we show the user the nav bar
   const subgoLinks = (
     <div className="category_container">
       <div className="category_container_Button">
@@ -43,7 +48,7 @@ const SubNavBar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </div>
     </div>
   );
-  return (
+  return (//a turnary statment to show the user if they are lgged in.
     <div>
       {!loading && <Fragment>{isAuthenticated ? subgoLinks : ""}</Fragment>}
     </div>

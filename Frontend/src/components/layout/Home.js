@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 const Home = ({ auth: { isAuthenticated, loading }, logout }) => {
+  //this home page is just a little something that gives more about the site
+  //only logged in users can access it and it gives a little more detail about how to use the site.
   return (
     <Fragment>
       <div className="glider-container">
@@ -42,7 +44,8 @@ const Home = ({ auth: { isAuthenticated, loading }, logout }) => {
         </div>
         <div className="littleDiscription">
           Explore our website and see what
-          <span className="littleDiscription_you">YOU</span> can offer to community
+          <span className="littleDiscription_you">YOU</span> can offer to
+          community
         </div>
       </div>
 
